@@ -1,27 +1,21 @@
 package com.example.ucmar17.a911_onthemove;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.hardware.*;
-import com.google.atap.tangoservice.*;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private TextView mTextMessage, xText, yText, zText;
     private Sensor sensor;
     private SensorManager sm;
+    private ArrayList<double[]> accVals;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,13 +42,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         xText.setText(accuracy + " ACCURACY");
     }
 
-    int count = 0;
     @Override
     public void onSensorChanged(SensorEvent event){
-        count ++;
-        xText.setText("X: " + event.values[0] + " " + count);
-        yText.setText("Y: " + event.values[1] + " " + count);
-        zText.setText("Z: " + event.values[2] + " " + count);
+        xText.setText("X: " + event.values[0]);
+        yText.setText("Y: " + event.values[1]);
+        zText.setText("Z: " + event.values[2]);
     }
 
     @Override
@@ -73,5 +65,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         xText = (TextView) findViewById(R.id.xText);
         yText = (TextView) findViewById(R.id.yText);
         zText = (TextView) findViewById(R.id.zText);
+
+        accVals = new ArrayList<>();
+        accVals.add(new double[3]);
+    }
+
+    boolean bool = true;
+
+    public void startRecord(){
+        if(bool){
+
+        } else {
+
+        }
+        bool = !bool;
+    }
+    public void start(){
+
     }
 }
