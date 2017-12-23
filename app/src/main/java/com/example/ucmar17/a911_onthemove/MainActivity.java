@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.hardware.*;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor sensor;
     private SensorManager sm;
     private ArrayList<double[]> accVals;
+    private Button record;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,21 +69,30 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yText = (TextView) findViewById(R.id.yText);
         zText = (TextView) findViewById(R.id.zText);
 
+        record = (Button) findViewById(R.id.record);
+
         accVals = new ArrayList<>();
-        accVals.add(new double[3]);
     }
 
     boolean bool = true;
-
-    public void startRecord(){
-        if(bool){
-
+    public void startRecord(View view) throws InterruptedException{
+        if(bool) {
+            long startTime = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startTime < 3000){
+                record.setText("Recording...");
+                record.setEnabled(false);
+            }
+            record.setEnabled(true);
+            record.setText("Start Reading");
         } else {
-
+            long startTime = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startTime < 3000){
+                record.setText("Reading...");
+                record.setEnabled(false);
+            }
+            record.setEnabled(true);
+            record.setText("Start Recording");
         }
         bool = !bool;
-    }
-    public void start(){
-
     }
 }
