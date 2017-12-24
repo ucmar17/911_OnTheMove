@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,26 +20,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sm;
     private ArrayList<double[]> accVals;
     private Button record;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
+    private long currentTime;
+    private BottomNavigationView mBottomNav;
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){
@@ -50,6 +33,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         xText.setText("X: " + event.values[0]);
         yText.setText("Y: " + event.values[1]);
         zText.setText("Z: " + event.values[2]);
+        if(System.currentTimeMillis() - currentTime > 3000){
+            startRecord();
+        } else if(record.getText().equals("Recording...")){
+            double[] temp = {event.values[0], event.values[1], event.values[2]};
+            accVals.add(temp);
+        }
     }
 
     @Override
@@ -58,8 +47,24 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);
+        mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        mTextMessage.setText(R.string.title_home);
+                        return true;
+                    case R.id.navigation_dashboard:
+                        mTextMessage.setText(R.string.title_dashboard);
+                        return true;
+                    case R.id.navigation_notifications:
+                        mTextMessage.setText(R.string.title_notifications);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
@@ -72,27 +77,41 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         record = (Button) findViewById(R.id.record);
 
         accVals = new ArrayList<>();
+
+        currentTime = (long) Double.POSITIVE_INFINITY;
     }
 
-    boolean bool = true;
-    public void startRecord(View view) throws InterruptedException{
-        if(bool) {
-            long startTime = System.currentTimeMillis();
-            while (System.currentTimeMillis() - startTime < 3000){
-                record.setText("Recording...");
-                record.setEnabled(false);
-            }
-            record.setEnabled(true);
+    public void startRecord(){
+        if(record.getText().equals("Recording...")){
             record.setText("Start Reading");
-        } else {
-            long startTime = System.currentTimeMillis();
-            while (System.currentTimeMillis() - startTime < 3000){
-                record.setText("Reading...");
-                record.setEnabled(false);
-            }
             record.setEnabled(true);
+            currentTime = (long) Double.POSITIVE_INFINITY;
+            Log.d("ArrayLIST", displayList(accVals));
+        } else if(record.getText().equals("Reading...")){
             record.setText("Start Recording");
+            record.setEnabled(true);
+            currentTime = (long) Double.POSITIVE_INFINITY;
         }
-        bool = !bool;
+    }
+
+    public void startRecord(View view){
+        if(record.getText().equals("Start Recording")) {
+            record.setText("Recording...");
+            record.setEnabled(false);
+            currentTime = System.currentTimeMillis();
+        } else if(record.getText().equals("Start Reading")) {
+            record.setText("Reading...");
+            record.setEnabled(false);
+            currentTime = System.currentTimeMillis();
+        }
+    }
+
+    private String displayList(ArrayList<double[]> array){
+        String printer = "[";
+        for(double[] element: array){
+            printer += "[" + element[0] + ", " + element[1] + ", " + element[2] + "], ";
+        }
+        printer += "]";
+        return printer + " " + array.size();
     }
 }
