@@ -93,12 +93,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             record.setText("Start Reading");
             record.setEnabled(true);
             currentTime = (long) Double.POSITIVE_INFINITY;
-            Log.d("ArrayLIST", displayList(accVals));
         } else if(record.getText().equals("Reading...")){
             record.setText("Start Recording");
             record.setEnabled(true);
             currentTime = (long) Double.POSITIVE_INFINITY;
-            Log.d("ArrayLIST", displayList(currentAccVals));
             boolean check = compareLists(accVals, currentAccVals);
             Log.d("ArrayLIST", check + "");
             result.setText(check + "");
@@ -134,18 +132,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         int county = 0;
         int countz = 0;
         int size = (one.size() > two.size()) ? two.size(): one.size();
-        int pass = (int)(0.9 * size);
+        int pass = (int)(0.9 * size) - 1;
         for(int x = 0; x < size; x++){
-            if(one.get(x)[0] + 0.2 > two.get(x)[0] || one.get(x)[0] - 0.2 < two.get(x)[0]){
+            if(one.get(x)[0] + 0.15 > two.get(x)[0] && one.get(x)[0] - 0.15 < two.get(x)[0]){
                 countx++;
             }
-            if(one.get(x)[1] + 0.2 > two.get(x)[1] || one.get(x)[1] - 0.2 < two.get(x)[1]){
+            if(one.get(x)[1] + 0.15 > two.get(x)[1] && one.get(x)[1] - 0.15 < two.get(x)[1]){
                 county++;
             }
-            if(one.get(x)[2] + 0.2 > two.get(x)[2] || one.get(x)[2] - 0.2 < two.get(x)[2]){
+            if(one.get(x)[2] + 0.15 > two.get(x)[2] && one.get(x)[2] - 0.15 < two.get(x)[2]){
                 countz++;
             }
         }
+        Log.d("ArrayLIST", displayList(one));
+        Log.d("ArrayLIST", displayList(two));
         Log.d("ArrayLIST", countx + " " + county + " " + countz + " ");
         if(countx >= pass && county >= pass && countz >= pass)
             return true;
