@@ -11,14 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.hardware.*;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-    private TextView mTextMessage, xText, yText, zText;
+    private TextView mTextMessage, xText, yText, zText, result;
     private Sensor sensor;
     private SensorManager sm;
-    private ArrayList<double[]> accVals;
+    private ArrayList<double[]> accVals, currentAccVals;
     private Button record;
     private long currentTime;
     private BottomNavigationView mBottomNav;
@@ -34,10 +36,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yText.setText("Y: " + event.values[1]);
         zText.setText("Z: " + event.values[2]);
         if(System.currentTimeMillis() - currentTime > 3000){
-            startRecord();
+            changeButton();
         } else if(record.getText().equals("Recording...")){
             double[] temp = {event.values[0], event.values[1], event.values[2]};
             accVals.add(temp);
+        } else if(record.getText().equals("Reading...")){
+            double[] temp = {event.values[0], event.values[1], event.values[2]};
+            currentAccVals.add(temp);
         }
     }
 
@@ -73,15 +78,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         xText = (TextView) findViewById(R.id.xText);
         yText = (TextView) findViewById(R.id.yText);
         zText = (TextView) findViewById(R.id.zText);
+        result = (TextView) findViewById(R.id.result);
 
         record = (Button) findViewById(R.id.record);
 
         accVals = new ArrayList<>();
+        currentAccVals = new ArrayList<>();
 
         currentTime = (long) Double.POSITIVE_INFINITY;
     }
 
-    public void startRecord(){
+    public void changeButton(){
         if(record.getText().equals("Recording...")){
             record.setText("Start Reading");
             record.setEnabled(true);
@@ -91,15 +98,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             record.setText("Start Recording");
             record.setEnabled(true);
             currentTime = (long) Double.POSITIVE_INFINITY;
+            Log.d("ArrayLIST", displayList(currentAccVals));
+            boolean check = compareLists(accVals, currentAccVals);
+            Log.d("ArrayLIST", check + "");
+            result.setText(check + "");
         }
     }
 
     public void startRecord(View view){
         if(record.getText().equals("Start Recording")) {
+            accVals = new ArrayList<>();
             record.setText("Recording...");
             record.setEnabled(false);
             currentTime = System.currentTimeMillis();
+            result.setText("TextView");
         } else if(record.getText().equals("Start Reading")) {
+            currentAccVals = new ArrayList<>();
             record.setText("Reading...");
             record.setEnabled(false);
             currentTime = System.currentTimeMillis();
@@ -113,5 +127,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         printer += "]";
         return printer + " " + array.size();
+    }
+
+    public boolean compareLists(ArrayList<double[]> one, ArrayList<double[]> two){
+        int countx = 0;
+        int county = 0;
+        int countz = 0;
+        int size = (one.size() > two.size()) ? two.size(): one.size();
+        int pass = (int)(0.9 * size);
+        for(int x = 0; x < size; x++){
+            if(one.get(x)[0] + 0.2 > two.get(x)[0] || one.get(x)[0] - 0.2 < two.get(x)[0]){
+                countx++;
+            }
+            if(one.get(x)[1] + 0.2 > two.get(x)[1] || one.get(x)[1] - 0.2 < two.get(x)[1]){
+                county++;
+            }
+            if(one.get(x)[2] + 0.2 > two.get(x)[2] || one.get(x)[2] - 0.2 < two.get(x)[2]){
+                countz++;
+            }
+        }
+        Log.d("ArrayLIST", countx + " " + county + " " + countz + " ");
+        if(countx >= pass && county >= pass && countz >= pass)
+            return true;
+        else return false;
     }
 }
