@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.hardware.*;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
@@ -75,12 +73,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensor = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        xText = (TextView) findViewById(R.id.xText);
-        yText = (TextView) findViewById(R.id.yText);
-        zText = (TextView) findViewById(R.id.zText);
-        result = (TextView) findViewById(R.id.result);
+        xText = findViewById(R.id.xText);
+        yText = findViewById(R.id.yText);
+        zText = findViewById(R.id.zText);
+        result = findViewById(R.id.result);
 
-        record = (Button) findViewById(R.id.record);
+        record = findViewById(R.id.record);
 
         accVals = new ArrayList<>();
         currentAccVals = new ArrayList<>();
