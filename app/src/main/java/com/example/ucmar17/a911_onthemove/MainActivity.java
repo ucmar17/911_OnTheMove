@@ -113,6 +113,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         currentTime = (long) Double.POSITIVE_INFINITY;
     }
 
+    public void onResume() {
+        super.onResume();
+        smAccel.registerListener(smGyro, gyro,
+                SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    public void onStop() {
+        super.onStop();
+        smAccel.unregisterListener(smGyro);
+    }
+
     public void changeButton(){
         if (Build.VERSION.SDK_INT >= 26) {
             ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150,100));
