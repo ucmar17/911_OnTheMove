@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.hardware.*;
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private TextView mTextMessage, xText, yText, zText, result;
@@ -115,13 +116,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void onResume() {
         super.onResume();
-        smAccel.registerListener(smGyro, gyro,
-                SensorManager.SENSOR_DELAY_NORMAL);
+        smAccel.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     public void onStop() {
         super.onStop();
-        smAccel.unregisterListener(smGyro);
+        smAccel.unregisterListener(this);
     }
 
     public void changeButton(){
