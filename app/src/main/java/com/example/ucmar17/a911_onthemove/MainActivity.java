@@ -3,17 +3,20 @@ package com.example.ucmar17.a911_onthemove;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.os.VibrationEffect;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-import android.hardware.*;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.hardware.SensorEventListener;
 import java.util.ArrayList;
 
 
