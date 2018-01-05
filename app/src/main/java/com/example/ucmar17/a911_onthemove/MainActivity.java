@@ -117,11 +117,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onResume() {
         super.onResume();
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
+        Log.d("Debug", "Resume");
     }
 
     public void onStop() {
         super.onStop();
         smAccel.unregisterListener(this);
+        Log.d("Debug", "Stop");
     }
 
     public void changeButton(){
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             currentTime = (long) Double.POSITIVE_INFINITY;
             boolean check1 = compareLists(accVals, currentAccVals);
             boolean check2 = compareLists(gyroVals, currentGyroVals);
-            Log.d("ArrayLIST", check1 + " " + check2);
+            Log.d("Debug", check1 + " " + check2);
             if(check1 && check2)
                 result.setText("True");
             else
@@ -195,9 +197,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 countz++;
             }
         }
-        Log.d("ArrayLIST", one.size() + "");
-        Log.d("ArrayLIST", two.size() + "");
-        Log.d("ArrayLIST", countx + " " + county + " " + countz + " ");
+        Log.d("Debug", one.size() + "");
+        Log.d("Debug", two.size() + "");
+        Log.d("Debug", countx + " " + county + " " + countz + " ");
         if(countx >= pass && county >= pass)
             return true;
         else if(county >= pass && countz >= pass)
