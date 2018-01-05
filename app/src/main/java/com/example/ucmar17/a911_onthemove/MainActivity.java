@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             mTextMessage.setText("Sensor");
         }
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
-        smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
+        smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
 
         xText = findViewById(R.id.xText);
         yText = findViewById(R.id.yText);
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void onResume() {
         super.onResume();
-        smAccel.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
+        smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
     }
 
     public void onStop() {
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             boolean check1 = compareLists(accVals, currentAccVals);
             boolean check2 = compareLists(gyroVals, currentGyroVals);
             Log.d("ArrayLIST", check1 + " " + check2);
-            if(check1 || check2)
+            if(check1 && check2)
                 result.setText("True");
             else
                 result.setText("False");
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         int county = 0;
         int countz = 0;
         int size = (one.size() > two.size()) ? two.size(): one.size();
-        int pass = (int)(0.6 * size) - 1;
+        int pass = (int)(0.6 * size);
         for(int x = 0; x < size; x++){
             if(one.get(x)[0] + 0.15 > two.get(x)[0] && one.get(x)[0] - 0.15 < two.get(x)[0]){
                 countx++;
@@ -195,8 +195,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 countz++;
             }
         }
-        Log.d("ArrayLIST", displayList(one));
-        Log.d("ArrayLIST", displayList(two));
+        Log.d("ArrayLIST", one.size() + "");
+        Log.d("ArrayLIST", two.size() + "");
         Log.d("ArrayLIST", countx + " " + county + " " + countz + " ");
         if(countx >= pass && county >= pass)
             return true;
