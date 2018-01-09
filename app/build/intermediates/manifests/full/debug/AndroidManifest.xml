@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.ucmar17.a911_onthemove.DialogUserActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

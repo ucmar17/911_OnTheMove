@@ -1,6 +1,8 @@
 package com.example.ucmar17.a911_onthemove;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        isFirstTime();
+
         mTextMessage = findViewById(R.id.message);
         /*mBottomNav = findViewById(R.id.navigation);
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -115,6 +119,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         currentGyroVals = new ArrayList<>();
 
         currentTime = (long) Double.POSITIVE_INFINITY;
+    }
+
+    private void isFirstTime() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            //show dialog if app never launch
+            Dialog dialog = new Dialog(MainActivity.this);
+            dialog.setContentView(R.layout.dialog_user);
+            dialog.show();
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
     }
 
     public void onResume() {
