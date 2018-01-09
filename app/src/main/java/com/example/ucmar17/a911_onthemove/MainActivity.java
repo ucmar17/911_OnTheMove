@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
     private long currentTime;
-    private BottomNavigationView mBottomNav;
+    //private BottomNavigationView mBottomNav;
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         mTextMessage = findViewById(R.id.message);
-        mBottomNav = findViewById(R.id.navigation);
+        /*mBottomNav = findViewById(R.id.navigation);
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 }
                 return false;
             }
-        });
+        });*/
 
         smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
