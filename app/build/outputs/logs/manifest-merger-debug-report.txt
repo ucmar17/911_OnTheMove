@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fe064cf89c5be3756d368997a4cfba69\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\dadac6e31f6e192d5ab9c82b724ffad4\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:transition:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\467d49fa20d86a0bceb6d9f1c060d7fa\AndroidManifest.xml:17:1-28:12
@@ -18,20 +18,20 @@ MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Ajithk14\.grad
 MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a70f8134fa9d26682ed322421c1f4e2c\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6b2023f848adc4e9f91eac3ebb2c4a97\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\99f76c94b89df16ecf8403f67a453d25\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
 	package
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:3:5-49
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:11-69
@@ -47,8 +47,14 @@ uses-permission#android.permission.VIBRATE
 ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:7:22-63
+uses-feature#android.hardware.sensor.accelerometer
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:8:5-10:37
+	android:required
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:10:9-34
+	android:name
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:9:9-63
 application
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:9:5-25:19
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:12:5-28:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fe064cf89c5be3756d368997a4cfba69\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fe064cf89c5be3756d368997a4cfba69\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\dadac6e31f6e192d5ab9c82b724ffad4\AndroidManifest.xml:25:5-29:19
@@ -78,33 +84,33 @@ MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Ajithk14\.gradl
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\99f76c94b89df16ecf8403f67a453d25\AndroidManifest.xml:24:5-28:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\99f76c94b89df16ecf8403f67a453d25\AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:16:9-54
 	android:icon
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:15:9-40
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:18:9-40
 activity#com.example.ucmar17.a911_onthemove.MainActivity
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:16:9-24:20
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:19:9-27:20
 	android:label
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:18:13-45
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:21:13-45
 	android:name
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:17:13-41
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:20:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:19:13-23:29
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:20:17-69
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:20:25-66
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:25:27-74
 uses-sdk
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml

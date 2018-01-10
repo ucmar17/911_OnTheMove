@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import android.widget.TextView;
 import android.hardware.Sensor;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button record;
     private long currentTime;
     private Toolbar toolbar;
+    private SensorManager sm;
+    private float acelVal, acelLast, shake; //acceleration difference
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
 
@@ -72,10 +75,39 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
+    private final SensorEventListener sensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            float x = sensorEvent.values[0];
+            float y = sensorEvent.values[1];
+            float z = sensorEvent.values[2];
+
+            acelLast = acelVal;
+            acelVal = (float) Math.sqrt((double)(x*x+y*y+z*z));
+            float delta = acelVal-acelLast;
+            shake  = shake *0.9f + delta;
+
+            if (shake > 12)
+            {
+                Toast toast = Toast.makeText(getApplicationContext(),"MAKE CALL", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        acelVal=SensorManager.GRAVITY_EARTH;
+        acelLast = SensorManager.GRAVITY_EARTH;
+        shake = 0.00f;
 
         isFirstTime();
 
