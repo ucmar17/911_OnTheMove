@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.os.VibrationEffect;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -87,10 +88,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float delta = acelVal-acelLast;
             shake  = shake *0.9f + delta;
 
-            if (shake > 12)
+            if (shake > 35)
             {
-                Toast toast = Toast.makeText(getApplicationContext(),"MAKE CALL", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 toast.show();
+
             }
         }
 
