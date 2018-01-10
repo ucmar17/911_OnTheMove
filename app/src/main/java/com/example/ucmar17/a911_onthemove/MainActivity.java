@@ -7,18 +7,20 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.os.VibrationEffect;
-import android.support.annotation.NonNull;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 import android.widget.TextView;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.hardware.SensorEventListener;
+
 import java.util.ArrayList;
 
 
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
     private long currentTime;
-    //private BottomNavigationView mBottomNav;
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){
@@ -76,24 +80,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         isFirstTime();
 
         mTextMessage = findViewById(R.id.message);
-        /*mBottomNav = findViewById(R.id.navigation);
-        mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        mTextMessage.setText(R.string.title_home);
-                        return true;
-                    case R.id.navigation_dashboard:
-                        mTextMessage.setText(R.string.title_dashboard);
-                        return true;
-                    case R.id.navigation_notifications:
-                        mTextMessage.setText(R.string.title_notifications);
-                        return true;
-                }
-                return false;
-            }
-        });*/
 
         smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -119,6 +105,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         currentGyroVals = new ArrayList<>();
 
         currentTime = (long) Double.POSITIVE_INFINITY;
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void isFirstTime() {
@@ -133,6 +127,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             editor.putBoolean("RanBefore", true);
             editor.commit();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(toggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onResume() {
