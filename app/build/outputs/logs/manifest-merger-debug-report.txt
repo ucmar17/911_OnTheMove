@@ -1,5 +1,6 @@
 -- Merging decision tree log ---
 manifest
+<<<<<<< HEAD
 ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
@@ -21,11 +22,35 @@ MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Ajithk14\.gradle\cac
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
+=======
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+MERGED from [com.android.support:design:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/f910579cf3ab17a71b458d601a481c16/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:transition:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/66a09b980da963af79255ff08a08bba7/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/02d45b0e3e3c881f2fc791b5aadc6a3b/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/bd3edf3dc85020ebb6f811936ed9c33b/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/0796c41950c3954eb74557b9dacde98b/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/9d5ded4cf89a45e5c9be9d1a69c98088/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/25555216e8d7c535c777432949a530fd/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/017547bc3af0f8fcbededcbba35e9230/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/1ecb36b89f85366afe350b85a24dc13b/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/83b8c0ca72f418e2f04cb00981eb1c5f/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/120afb0756d86921d5a53e60adeefe10/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/5549208f50cfacfba5e52f8da5721613/AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7a237e799c7915b7845b2c4ddafb8d66/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+>>>>>>> 4d09e74355731775bd20de31a8d0e94781b20523
 	package
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:3:5-49
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	android:versionName
+<<<<<<< HEAD
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
@@ -33,9 +58,19 @@ INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-24:12
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
+=======
+		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-27:12
+		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
+>>>>>>> 4d09e74355731775bd20de31a8d0e94781b20523
 	xmlns:android
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
+<<<<<<< HEAD
 ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:4:5-79
 	android:name
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:4:22-76
@@ -105,6 +140,77 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:20:27-74
+=======
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:6:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:7:5-66
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:7:22-63
+application
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:9:5-25:19
+MERGED from [com.android.support:design:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/f910579cf3ab17a71b458d601a481c16/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/f910579cf3ab17a71b458d601a481c16/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:transition:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/66a09b980da963af79255ff08a08bba7/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/66a09b980da963af79255ff08a08bba7/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/02d45b0e3e3c881f2fc791b5aadc6a3b/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/02d45b0e3e3c881f2fc791b5aadc6a3b/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/bd3edf3dc85020ebb6f811936ed9c33b/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/bd3edf3dc85020ebb6f811936ed9c33b/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/0796c41950c3954eb74557b9dacde98b/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/0796c41950c3954eb74557b9dacde98b/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/9d5ded4cf89a45e5c9be9d1a69c98088/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/9d5ded4cf89a45e5c9be9d1a69c98088/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/25555216e8d7c535c777432949a530fd/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/25555216e8d7c535c777432949a530fd/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/017547bc3af0f8fcbededcbba35e9230/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/017547bc3af0f8fcbededcbba35e9230/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/1ecb36b89f85366afe350b85a24dc13b/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/1ecb36b89f85366afe350b85a24dc13b/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/83b8c0ca72f418e2f04cb00981eb1c5f/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/83b8c0ca72f418e2f04cb00981eb1c5f/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/120afb0756d86921d5a53e60adeefe10/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/120afb0756d86921d5a53e60adeefe10/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/5549208f50cfacfba5e52f8da5721613/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/5549208f50cfacfba5e52f8da5721613/AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7a237e799c7915b7845b2c4ddafb8d66/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7a237e799c7915b7845b2c4ddafb8d66/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:14:9-35
+	android:label
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:12:9-41
+	android:roundIcon
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:13:9-54
+	android:icon
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:11:9-43
+	android:allowBackup
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:10:9-35
+	android:theme
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:15:9-40
+activity#com.example.ucmar17.a911_onthemove.MainActivity
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:16:9-24:20
+	android:label
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:18:13-45
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:17:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:22:27-74
+>>>>>>> 4d09e74355731775bd20de31a8d0e94781b20523
 uses-sdk
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
