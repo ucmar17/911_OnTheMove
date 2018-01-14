@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 int id = item.getItemId();
                 switch(id){
                     case R.id.nav_settings:
-                        Toast toast = Toast.makeText(getApplicationContext(),"CLICKED",Toast.LENGTH_SHORT);
-                        toast.show();
+                        Intent change = new Intent(MainActivity.this, SettingsActivity.class);
+                        startActivity(change);
                         return true;
                 }
                 return false;
