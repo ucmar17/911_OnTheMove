@@ -37,10 +37,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.example.ucmar17.a911_onthemove.MyService"
-            android:exported="false" />
-
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />

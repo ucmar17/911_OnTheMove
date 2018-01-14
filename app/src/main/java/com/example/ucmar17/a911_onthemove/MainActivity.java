@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private TextView mTextMessage, xText, yText, zText, result;
     private Sensor accel, gyro;
+    PowerManager.WakeLock wL;
     private SensorManager smAccel, smGyro;
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
@@ -96,9 +97,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float delta = acelVal-acelLast;
             shake  = shake *0.9f + delta;
 
-            if (shake > 35)
+            if (shake > 20)
             {
-                Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT );
                 toast.show();
                 if (Build.VERSION.SDK_INT >= 26) {
                     ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(500,200));
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
 
         PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wL = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"911onthemove");
+        wL = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"911onthemove");
         super.onCreate(savedInstanceState);
         wL.acquire();
         setContentView(R.layout.activity_main);
@@ -292,6 +293,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         printer += "]";
         return printer + " " + array.size();
+    }
+    public void releaseWake(View v)
+    {
+        wL.release();
     }
 
     public boolean compareLists(ArrayList<double[]> one, ArrayList<double[]> two){
