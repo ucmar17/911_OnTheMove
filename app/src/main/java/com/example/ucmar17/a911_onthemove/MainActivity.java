@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             {
                 Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 toast.show();
+                if (Build.VERSION.SDK_INT >= 26) {
+                    ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(500,200));
+                } else {
+                    ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(500);
+                }
 
             }
         }
