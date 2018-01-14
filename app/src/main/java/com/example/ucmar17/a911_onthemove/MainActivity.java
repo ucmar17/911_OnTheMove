@@ -1,28 +1,38 @@
 package com.example.ucmar17.a911_onthemove;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.os.VibrationEffect;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.MainThread;
+import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenu;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
 import android.widget.TextView;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.hardware.SensorEventListener;
-
 import java.util.ArrayList;
 
 
@@ -34,11 +44,73 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
     private long currentTime;
-    private Toolbar toolbar;
     private SensorManager sm;
     private float acelVal, acelLast, shake; //acceleration difference
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    private NavigationView nav;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        acelVal = SensorManager.GRAVITY_EARTH;
+        acelLast = SensorManager.GRAVITY_EARTH;
+        shake = 0.00f;
+
+        isFirstTime();
+
+        nav = findViewById(R.id.nav_menu);
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id){
+                    case R.id.nav_settings:
+                        Toast toast = Toast.makeText(getApplicationContext(),"CLICKED",Toast.LENGTH_SHORT);
+                        toast.show();
+                        return true;
+                }
+                return false;
+            }
+        });
+        mTextMessage = findViewById(R.id.message);
+
+        smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        try {
+            accel = smAccel.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+            gyro = smAccel.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
+        } catch (NullPointerException e) {
+            mTextMessage.setText("Sensor");
+        }
+        smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
+        smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
+
+        xText = findViewById(R.id.xText);
+        yText = findViewById(R.id.yText);
+        zText = findViewById(R.id.zText);
+        result = findViewById(R.id.result);
+
+        record = findViewById(R.id.record);
+
+        accVals = new ArrayList<>();
+        currentAccVals = new ArrayList<>();
+        gyroVals = new ArrayList<>();
+        currentGyroVals = new ArrayList<>();
+
+        currentTime = (long) Double.POSITIVE_INFINITY;
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){
@@ -84,70 +156,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float z = sensorEvent.values[2];
 
             acelLast = acelVal;
-            acelVal = (float) Math.sqrt((double)(x*x+y*y+z*z));
+            acelVal = (float) Math.sqrt((double)(x * x + y * y + z * z));
             float delta = acelVal-acelLast;
             shake  = shake *0.9f + delta;
 
-            if (shake > 35)
+            if (shake > 30)
             {
                 Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 toast.show();
 
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:7038998735"));
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                    }
+                }
+                if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                    startActivity(callIntent);
+                }
             }
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int i) {
-
+            //
         }
     };
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
-        acelVal=SensorManager.GRAVITY_EARTH;
-        acelLast = SensorManager.GRAVITY_EARTH;
-        shake = 0.00f;
-
-        isFirstTime();
-
-        mTextMessage = findViewById(R.id.message);
-
-        smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        try {
-            accel = smAccel.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
-            gyro = smAccel.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
-        }catch (NullPointerException e){
-            mTextMessage.setText("Sensor");
-        }
-        smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
-        smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
-
-        xText = findViewById(R.id.xText);
-        yText = findViewById(R.id.yText);
-        zText = findViewById(R.id.zText);
-        result = findViewById(R.id.result);
-
-        record = findViewById(R.id.record);
-
-        accVals = new ArrayList<>();
-        currentAccVals = new ArrayList<>();
-        gyroVals = new ArrayList<>();
-        currentGyroVals = new ArrayList<>();
-
-        currentTime = (long) Double.POSITIVE_INFINITY;
-
-        drawerLayout = findViewById(R.id.drawerLayout);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
     private void isFirstTime() {
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
@@ -174,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onResume() {
         super.onResume();
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
+        smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
         Log.d("Debug", "Resume");
     }
 

@@ -3574,7 +3574,7 @@ public final class R {
     public static final int middle=0x7f08005d;
     public static final int mini=0x7f08005e;
     public static final int multiply=0x7f08005f;
-    public static final int nav_account=0x7f080060;
+    public static final int nav_menu=0x7f080060;
     public static final int nav_settings=0x7f080061;
     public static final int navigationHome=0x7f080062;
     public static final int navigation_header_container=0x7f080063;

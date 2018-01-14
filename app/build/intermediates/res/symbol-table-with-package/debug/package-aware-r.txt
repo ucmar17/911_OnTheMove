@@ -873,7 +873,7 @@ int id message 0x7f08005c
 int id middle 0x7f08005d
 int id mini 0x7f08005e
 int id multiply 0x7f08005f
-int id nav_account 0x7f080060
+int id nav_menu 0x7f080060
 int id nav_settings 0x7f080061
 int id navigationHome 0x7f080062
 int id navigation_header_container 0x7f080063
