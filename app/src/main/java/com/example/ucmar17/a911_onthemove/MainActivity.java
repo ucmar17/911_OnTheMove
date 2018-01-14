@@ -2,9 +2,12 @@ package com.example.ucmar17.a911_onthemove;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.os.Vibrator;
 import android.os.VibrationEffect;
 import android.support.design.widget.Snackbar;
@@ -33,8 +36,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager smAccel, smGyro;
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
+    TextView gyroxak, gyroyak, gyrozak;
     private long currentTime;
     private Toolbar toolbar;
+    private SensorManager sensorManagerAK;
+    private Sensor gyroScopesensorAK;
+    private SensorEventListener gyroscopeEventListenerAK;
+
     private SensorManager sm;
     private float acelVal, acelLast, shake; //acceleration difference
     private DrawerLayout drawerLayout;
@@ -108,8 +116,45 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wL = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"911onthemove");
         super.onCreate(savedInstanceState);
+        wL.acquire();
         setContentView(R.layout.activity_main);
+
+        gyroxak = (TextView) findViewById(R.id.textView2);
+        gyroyak = (TextView) findViewById(R.id.textView3);
+        gyrozak = (TextView) findViewById(R.id.textView4);
+        sensorManagerAK=(SensorManager)getSystemService(SENSOR_SERVICE);
+        gyroScopesensorAK=sensorManagerAK.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        if (gyroScopesensorAK==null)
+        {
+            Toast.makeText(this,"No gyroscope", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        gyroscopeEventListenerAK = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                float gyroAkx = sensorEvent.values[0];
+                float gyroAky = sensorEvent.values[1];
+                float gyroAkz = sensorEvent.values[2];
+                gyroxak.setText("X : " + (int)gyroAkx + " rad/s");
+                gyroyak.setText("Y : " + (int)gyroAky + " rad/s");
+                gyrozak.setText("Z : " + (int)gyroAkz + " rad/s");
+                Log.d("val", gyroAkx + "");
+
+
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+
+            }
+        };
+
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         acelVal=SensorManager.GRAVITY_EARTH;
@@ -178,6 +223,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void onResume() {
         super.onResume();
+        sensorManagerAK.registerListener(gyroscopeEventListenerAK,gyroScopesensorAK,SensorManager.SENSOR_DELAY_FASTEST);
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
         Log.d("Debug", "Resume");
     }
@@ -186,6 +232,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onStop();
         smAccel.unregisterListener(this);
         Log.d("Debug", "Stop");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManagerAK.unregisterListener(gyroscopeEventListenerAK);
     }
 
     public void changeButton(){

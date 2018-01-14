@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
@@ -27,13 +28,18 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.ucmar17.a911_onthemove.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.example.ucmar17.a911_onthemove.MyService"
+            android:exported="false" />
 
         <meta-data
             android:name="android.support.VERSION"
