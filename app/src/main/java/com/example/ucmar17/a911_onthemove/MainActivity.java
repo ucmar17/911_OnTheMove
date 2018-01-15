@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } catch (NullPointerException e) {
             mTextMessage.setText("Sensor");
         }
+
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
         smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
 
@@ -160,11 +161,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float delta = acelVal-acelLast;
             shake  = shake *0.9f + delta;
 
-<<<<<<< HEAD
-            if (shake > 25)
-=======
             if (shake > 30)
->>>>>>> 42c5c6df95ddbc88e1cb0c41ee3898c3b340d839
             {
                 //Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 if (Build.VERSION.SDK_INT >= 26) {
