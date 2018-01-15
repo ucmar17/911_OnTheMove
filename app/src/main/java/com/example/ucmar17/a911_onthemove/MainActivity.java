@@ -88,10 +88,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float delta = acelVal-acelLast;
             shake  = shake *0.9f + delta;
 
-            if (shake > 35)
+            if (shake > 25)
             {
-                Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
-                toast.show();
+                //Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
+                if (Build.VERSION.SDK_INT >= 26) {
+                    ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(500,200));
+                } else {
+                    ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(500);
+                }
+                ///toast.show();
 
             }
         }
