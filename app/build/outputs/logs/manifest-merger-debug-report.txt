@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fe064cf89c5be3756d368997a4cfba69\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\dadac6e31f6e192d5ab9c82b724ffad4\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:transition:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\467d49fa20d86a0bceb6d9f1c060d7fa\AndroidManifest.xml:17:1-28:12
@@ -18,20 +18,20 @@ MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Ajithk14\.grad
 MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a70f8134fa9d26682ed322421c1f4e2c\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6b2023f848adc4e9f91eac3ebb2c4a97\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\99f76c94b89df16ecf8403f67a453d25\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
 	package
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:3:5-49
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-31:12
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:1-34:12
 		INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:2:11-69
@@ -58,7 +58,7 @@ ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\An
 	android:name
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:10:9-63
 application
-ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:13:5-29:19
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:13:5-32:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fe064cf89c5be3756d368997a4cfba69\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fe064cf89c5be3756d368997a4cfba69\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Ajithk14\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\dadac6e31f6e192d5ab9c82b724ffad4\AndroidManifest.xml:25:5-29:19
@@ -117,6 +117,12 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
 		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:26:27-74
+service#com.example.ucmar17.a911_onthemove.RSSPullService
+ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:29:9-31:39
+	android:exported
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml:30:13-43
 uses-sdk
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\src\main\AndroidManifest.xml
