@@ -37,12 +37,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager smAccel, smGyro;
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
-    TextView gyroxak, gyroyak, gyrozak;
+
     private long currentTime;
     private Toolbar toolbar;
-    private SensorManager sensorManagerAK;
-    private Sensor gyroScopesensorAK;
-    private SensorEventListener gyroscopeEventListenerAK;
+
 
     private SensorManager sm;
     private float acelVal, acelLast, shake; //acceleration difference
@@ -123,7 +121,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         wL.acquire();
         setContentView(R.layout.activity_main);
-
+        SensorManager sensorManagerAK;
+        Sensor gyroScopesensorAK;
+        TextView gyroxak, gyroyak, gyrozak;
+        SensorEventListener gyroscopeEventListenerAK;
         gyroxak = (TextView) findViewById(R.id.textView2);
         gyroyak = (TextView) findViewById(R.id.textView3);
         gyrozak = (TextView) findViewById(R.id.textView4);
