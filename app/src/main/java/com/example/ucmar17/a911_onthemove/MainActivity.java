@@ -49,11 +49,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private NavigationView nav;
+    private SensorManager sensorManagerAK;
+    private Sensor gyroScopesensorAK;
+    TextView gyroxak, gyroyak, gyrozak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        gyroxak = (TextView) findViewById(R.id.textView2);
+        gyroyak = (TextView) findViewById(R.id.textView3);
+        gyrozak = (TextView) findViewById(R.id.textView4);
+        sensorManagerAK=(SensorManager)getSystemService(SENSOR_SERVICE);
+        gyroScopesensorAK=sensorManagerAK.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        if (gyroScopesensorAK==null)
+        {
+            Toast.makeText(this,"No gyroscope", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         acelVal = SensorManager.GRAVITY_EARTH;
@@ -117,6 +133,25 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy){
         //
     }
+    public SensorEventListener gyroscopeEventListenerAK = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            float gyroAkx = sensorEvent.values[0];
+            float gyroAky = sensorEvent.values[1];
+            float gyroAkz = sensorEvent.values[2];
+            gyroxak.setText("X : " + (int)gyroAkx + " rad/s");
+            gyroyak.setText("Y : " + (int)gyroAky + " rad/s");
+            gyrozak.setText("Z : " + (int)gyroAkz + " rad/s");
+            //Log.d("val", gyroAkx + "");
+
+
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
 
     @Override
     public void onSensorChanged(SensorEvent event){
@@ -148,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
+
 
     private final SensorEventListener sensorListener = new SensorEventListener() {
         @Override
@@ -216,11 +252,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onResume();
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
         smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
+        sensorManagerAK.registerListener(gyroscopeEventListenerAK,gyroScopesensorAK ,
+                SensorManager.SENSOR_DELAY_NORMAL);
         Log.d("Debug", "Resume");
     }
 
     public void onStop() {
         super.onStop();
+        sensorManagerAK.unregisterListener(gyroscopeEventListenerAK);
         smAccel.unregisterListener(this);
         Log.d("Debug", "Stop");
     }
