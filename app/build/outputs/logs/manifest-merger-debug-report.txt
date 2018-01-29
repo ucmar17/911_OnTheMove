@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
 MERGED from [com.android.support:design:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/f910579cf3ab17a71b458d601a481c16/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:transition:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/66a09b980da963af79255ff08a08bba7/AndroidManifest.xml:17:1-28:12
@@ -18,20 +18,20 @@ MERGED from [com.android.support:support-core-ui:26.1.0] /Users/UCMar17/.gradle/
 MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/120afb0756d86921d5a53e60adeefe10/AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-compat:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/5549208f50cfacfba5e52f8da5721613/AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7a237e799c7915b7845b2c4ddafb8d66/AndroidManifest.xml:17:1-30:12
-INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
-INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:3:5-49
 		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
-		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
 		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
-		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-42:12
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:1-51:12
 		INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:2:11-69
@@ -66,7 +66,7 @@ ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.x
 	android:name
 		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:13:9-61
 application
-ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:16:5-40:19
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:16:5-49:19
 MERGED from [com.android.support:design:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/UCMar17/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/f910579cf3ab17a71b458d601a481c16/AndroidManifest.xml:25:5-29:19
@@ -137,6 +137,16 @@ ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.x
 		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:38:17-80
 	android:name
 		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:37:17-63
+activity#com.example.ucmar17.a911_onthemove.FirstTime
+ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:40:9-48:20
+	android:parentActivityName
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:43:13-82
+	android:label
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:42:13-62
+	android:theme
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:44:13-56
+	android:name
+		ADDED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml:41:13-38
 uses-sdk
 INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/UCMar17/Documents/911_OnTheMove/app/src/main/AndroidManifest.xml

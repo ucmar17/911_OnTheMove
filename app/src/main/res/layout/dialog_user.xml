@@ -21,9 +21,20 @@
             android:layout_marginTop="10dp"
             android:background="#00ddff"
             android:gravity="center"
-            android:text="Welcome: This is the first time you are opening this app!"
+            android:text="Welcome! Please enter your name:"
             android:textColor="#cc0000"
-            android:textSize="40sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_name"
+            android:textSize="20dp"
+            android:hint="Enter name:"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="name"
+            android:text="Next..."/>
     </LinearLayout>
 </LinearLayout>

@@ -27,6 +27,7 @@ import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.hardware.Sensor;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private NavigationView nav;
+    private String name;
+    private EditText username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         acelVal = SensorManager.GRAVITY_EARTH;
         acelLast = SensorManager.GRAVITY_EARTH;
         shake = 0.00f;
+
+        username = findViewById(R.id.user_name);
+        name = "";
 
         isFirstTime();
 
@@ -76,7 +82,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 return false;
             }
         });
-        mTextMessage = findViewById(R.id.message);
+        mTextMessage = findViewById(R.id.navigationHome);
+        mTextMessage.setText(name);
 
         smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -89,9 +96,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         smAccel.registerListener(this, accel, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
         smGyro.registerListener(this, gyro, SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM);
 
-        xText = findViewById(R.id.xText);
+        /*xText = findViewById(R.id.xText);
         yText = findViewById(R.id.yText);
-        zText = findViewById(R.id.zText);
+        zText = findViewById(R.id.zText);*/
         result = findViewById(R.id.result);
 
         record = findViewById(R.id.record);
@@ -119,10 +126,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event){
+        //mTextMessage.setText("Welcome: " + R.string.pref_default_display_name);
         if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
-            xText.setText("XA: " + event.values[0]);
+            /*xText.setText("XA: " + event.values[0]);
             yText.setText("YA: " + event.values[1]);
-            zText.setText("ZA: " + event.values[2]);
+            zText.setText("ZA: " + event.values[2]);*/
             if (System.currentTimeMillis() - currentTime > 3000) {
                 changeButton();
             } else if (record.getText().equals("Recording...")) {
@@ -133,9 +141,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 currentAccVals.add(temp);
             }
         } else if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE_UNCALIBRATED){
-            xText.setText("XG: " + event.values[0]);
+            /*xText.setText("XG: " + event.values[0]);
             yText.setText("YG: " + event.values[1]);
-            zText.setText("ZG: " + event.values[2]);
+            zText.setText("ZG: " + event.values[2]);*/
             if (System.currentTimeMillis() - currentTime > 3000) {
                 changeButton();
             } else if (record.getText().equals("Recording...")) {
@@ -187,14 +195,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void isFirstTime() {
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore) {
+        if (!ranBefore || ranBefore) {
             //show dialog if app never launch
             Dialog dialog = new Dialog(MainActivity.this);
             dialog.setContentView(R.layout.dialog_user);
             dialog.show();
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean("RanBefore", true);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -290,9 +298,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 countz++;
             }
         }
-        Log.d("Debug", one.size() + "");
-        Log.d("Debug", two.size() + "");
-        Log.d("Debug", countx + " " + county + " " + countz + " ");
         if(countx >= pass && county >= pass)
             return true;
         else if(county >= pass && countz >= pass)
@@ -300,5 +305,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else if(countx >= pass && countz >= pass)
             return true;
         else return false;
+    }
+    public void name(View view){
+        Log.d("debug1", username.toString());
+        //name = username.toString();
     }
 }
