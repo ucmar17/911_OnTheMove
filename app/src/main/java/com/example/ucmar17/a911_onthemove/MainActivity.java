@@ -1,9 +1,7 @@
 package com.example.ucmar17.a911_onthemove;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,11 +9,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.os.Vibrator;
 import android.os.VibrationEffect;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
-import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -23,7 +20,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ArrayList<double[]> accVals, currentAccVals, gyroVals, currentGyroVals;
     private Button record;
     private long currentTime;
+    PowerManager.WakeLock wL;
     private SensorManager sm;
     private float acelVal, acelLast, shake; //acceleration difference
     private DrawerLayout drawerLayout;
@@ -52,10 +49,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+
+        MessageReceiver receiver = new MessageReceiver(new Message());
+        Intent myIntent =new Intent(this,RSSPullService.class);
+        myIntent.putExtra("time",100);
+        myIntent.putExtra("receiver",receiver);
+        startService(myIntent);
+
         acelVal = SensorManager.GRAVITY_EARTH;
         acelLast = SensorManager.GRAVITY_EARTH;
         shake = 0.00f;
@@ -116,10 +119,72 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy){
         //
     }
+    /*
+    synchronized private static PowerManager.WakeLock getLock(Context context) {
+        if (lockStatic==null) {
+            PowerManager mgr=(PowerManager)context.getSystemService(Context.POWER_SERVICE);
 
+            lockStatic = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"accelerometer1");
+            lockStatic.setReferenceCounted(true);
+        }
+
+        return(lockStatic);
+    }
+
+    @Override
+    protected void onHandleIntent(Intent intent) {
+
+        smAccel=(SensorManager) getSystemService(SENSOR_SERVICE);
+        smAccel.unregisterListener(this);
+        smAccel.registerListener(this, smAccel.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        smGyro=(SensorManager) getSystemService(SENSOR_SERVICE);
+        smGyro.unregisterListener(this);
+        smGyro.registerListener(this, smAccel.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED), SensorManager.SENSOR_DELAY_NORMAL);
+
+
+        synchronized (this) {
+            boolean run = true;
+            while (run){
+                try {
+                    wait(1000);
+                    getLock(MainActivity.this).acquire();
+                    smAccel=(SensorManager) getSystemService(SENSOR_SERVICE);
+                    smAccel.unregisterListener(this);
+                    smAccel.registerListener(this, smAccel.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+                    smGyro=(SensorManager) getSystemService(SENSOR_SERVICE);
+                    smGyro.unregisterListener(this);
+                    smGyro.registerListener(this, smAccel.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED), SensorManager.SENSOR_DELAY_NORMAL);nager.SENSOR_DELAY_NORMAL);
+                    Log.d("Accelerometer service", "tick!");
+
+                } catch (Exception e) {
+                    run = false;
+                    Log.d("Accelerometer service", "interrupted; cause: " + e.getMessage());
+
+
+                }
+            }
+        }
+    }
+    */
     @Override
     public void onSensorChanged(SensorEvent event){
         if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+
+            acelLast = acelVal;
+            acelVal = (float) Math.sqrt((double)(x * x + y * y + z * z));
+            float delta = acelVal-acelLast;
+            shake  = shake *0.9f + delta;
+
+            if (shake > 30)
+            {
+                Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
+                //toast.show();
+                vibrate();
+                //makeCall("7038998735");
+            }
             xText.setText("XA: " + event.values[0]);
             yText.setText("YA: " + event.values[1]);
             zText.setText("ZA: " + event.values[2]);
@@ -164,17 +229,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             {
                 Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 toast.show();
-
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:7038998735"));
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-                    }
-                }
-                if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                    startActivity(callIntent);
-                }
+                vibrate();
+                //makeCall("7038998735");
             }
         }
 
@@ -183,7 +239,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             //
         }
     };
-
+    public void makeCall(String number)
+    {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + number));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+            }
+        }
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            startActivity(callIntent);
+        }
+    }
     private void isFirstTime() {
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         boolean ranBefore = preferences.getBoolean("RanBefore", false);
@@ -215,10 +283,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void onStop() {
         super.onStop();
-        smAccel.unregisterListener(this);
+        //smAccel.unregisterListener(this);
+        //smGyro.unregisterListener(this);
         Log.d("Debug", "Stop");
     }
-
+    public void vibrate()
+    {
+        if (Build.VERSION.SDK_INT >= 26) {
+            ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150,100));
+        } else {
+            ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(150);
+        }
+    }
     public void changeButton(){
         if (Build.VERSION.SDK_INT >= 26) {
             ((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150,100));
@@ -300,5 +376,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else if(countx >= pass && countz >= pass)
             return true;
         else return false;
+    }
+    public class Message {
+        public void displayMessage(int resultCode, Bundle resultData) {
+            String message = resultData.getString("message");
+
+            Toast.makeText(MainActivity.this,resultCode + " " + message, Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
