@@ -940,10 +940,6 @@
         "source": "/Users/UCMar17/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/5549208f50cfacfba5e52f8da5721613/res/drawable-xhdpi-v4/notification_bg_normal.9.png"
     },
     {
-        "merged": "/Users/UCMar17/Documents/911_OnTheMove/app/build/intermediates/res/merged/debug/layout_content_first_time.xml.flat",
-        "source": "/Users/UCMar17/Documents/911_OnTheMove/app/src/main/res/layout/content_first_time.xml"
-    },
-    {
         "merged": "/Users/UCMar17/Documents/911_OnTheMove/app/build/intermediates/res/merged/debug/anim_design_snackbar_out.xml.flat",
         "source": "/Users/UCMar17/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/327de1f6580083730fa4685b956d0bd8/res/anim/design_snackbar_out.xml"
     },

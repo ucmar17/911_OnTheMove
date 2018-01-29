@@ -44,15 +44,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ucmar17.a911_onthemove.MainActivity" />
         </activity>
-        <activity
-            android:name="com.example.ucmar17.a911_onthemove.FirstTime"
-            android:label="@string/title_activity_first_time"
-            android:parentActivityName="android.support.v7.app.AppCompatActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.support.v7.app.AppCompatActivity" />
-        </activity>
+        <activity android:name="com.example.ucmar17.a911_onthemove.FirstTime" />
 
         <meta-data
             android:name="android.support.VERSION"
