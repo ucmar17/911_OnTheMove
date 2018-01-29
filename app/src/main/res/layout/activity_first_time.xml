@@ -21,16 +21,34 @@
             android:layout_marginTop="10dp"
             android:background="#00ddff"
             android:gravity="center"
-            android:text="Welcome! Please enter your name:"
+            android:text="Welcome!"
             android:textColor="#cc0000"
             android:textSize="20sp"
             android:textStyle="bold" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/user_name"
+            android:id="@+id/name"
             android:textSize="20dp"
             android:hint="Enter name:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/number1"
+            android:textSize="20dp"
+            android:hint="Enter number to call:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/number2"
+            android:textSize="20dp"
+            android:hint="Enter number to text:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/number3"
+            android:textSize="20dp"
+            android:hint="Enter number to text:"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"

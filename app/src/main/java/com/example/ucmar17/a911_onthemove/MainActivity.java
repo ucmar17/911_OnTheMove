@@ -1,43 +1,43 @@
 package com.example.ucmar17.a911_onthemove;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Vibrator;
 import android.os.VibrationEffect;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
-import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.gsm.SmsManager;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.hardware.SensorEventListener;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
     private TextView mTextMessage, xText, yText, zText, result;
     private Sensor accel, gyro;
@@ -50,11 +50,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private NavigationView nav;
-    private String name;
-    private EditText username;
+    private String person[];
+    private LocationManager lmanager;
+    private Location location;
+    String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/text", message = "I am in a crisis situation. My location is at: http://maps.google.com";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -63,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         acelLast = SensorManager.GRAVITY_EARTH;
         shake = 0.00f;
 
-        username = findViewById(R.id.user_name);
-        name = "";
+        File dir = new File(path);
+        dir.mkdirs();
 
         isFirstTime();
 
@@ -75,15 +77,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 int id = item.getItemId();
                 switch(id){
                     case R.id.nav_settings:
-                        Intent change = new Intent(MainActivity.this, SettingsActivity.class);
+                        Intent change = new Intent(MainActivity.this, FirstTime.class);
                         startActivity(change);
+                        person = loadData();
+                        mTextMessage.setText(person[0]);
                         return true;
                 }
                 return false;
             }
         });
-        mTextMessage = findViewById(R.id.navigationHome);
-        mTextMessage.setText(name);
+        mTextMessage = findViewById(R.id.input_name);
 
         smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -117,8 +120,25 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         toggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+        person = loadData();
+        mTextMessage.setText(person[0]);
+
+        lmanager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 1);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+    }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){
         //
@@ -126,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event){
-        //mTextMessage.setText("Welcome: " + R.string.pref_default_display_name);
+        mTextMessage.setText("Welcome " + person[0]);
         if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
             /*xText.setText("XA: " + event.values[0]);
             yText.setText("YA: " + event.values[1]);
@@ -166,48 +186,74 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             acelLast = acelVal;
             acelVal = (float) Math.sqrt((double)(x * x + y * y + z * z));
             float delta = acelVal-acelLast;
-            shake  = shake *0.9f + delta;
+            shake  = shake * 0.9f + delta;
 
             if (shake > 30)
             {
                 Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 toast.show();
-
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:7038998735"));
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-                    }
-                }
-                if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                    startActivity(callIntent);
-                }
+                makeCallAndText();
             }
         }
-
         @Override
         public void onAccuracyChanged(Sensor sensor, int i) {
             //
         }
     };
-
+    public void makeCallAndText() throws NullPointerException{
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            message = "I am in a crisis situation.";
+        } else {
+            location = lmanager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            message = "I am in a crisis situation. My location is at: http://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();
+        }
+        SmsManager manager = SmsManager.getDefault();
+        manager.sendTextMessage(person[2], null, message, null, null);
+        manager.sendTextMessage(person[2], null, message, null, null);
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + person[1]));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+            }
+        }
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            startActivity(callIntent);
+        }
+    }
     private void isFirstTime() {
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore || ranBefore) {
-            //show dialog if app never launch
-            Dialog dialog = new Dialog(MainActivity.this);
-            dialog.setContentView(R.layout.dialog_user);
-            dialog.show();
+        FirstTime first = new FirstTime();
+        if (!ranBefore) {
+            Log.d("debug1", "3");
+            Intent change = new Intent(MainActivity.this, first.getClass());
+            startActivity(change);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean("RanBefore", true);
             editor.apply();
         }
     }
+    public String[] loadData() {
+        File file = getApplicationContext().getFileStreamPath("user.txt");
+        String temp = "";
+        String numbers = "";
+        if(file.exists()){
+            try{
+                BufferedReader reader = new BufferedReader(new InputStreamReader(openFileInput("user.txt")));
+                while((temp = reader.readLine()) != null){
+                    numbers += temp + " ";
+                }
+            } catch (Exception e){
+                numbers = e.getMessage();
+            }
+        }
+        return numbers.split(" ");
+    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item){;;
         if(toggle.onOptionsItemSelected(item)){
             return true;
         }
@@ -305,9 +351,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else if(countx >= pass && countz >= pass)
             return true;
         else return false;
-    }
-    public void name(View view){
-        Log.d("debug1", username.toString());
-        //name = username.toString();
     }
 }
