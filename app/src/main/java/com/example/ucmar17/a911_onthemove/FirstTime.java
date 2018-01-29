@@ -22,7 +22,7 @@ public class FirstTime extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_time);
+        setContentView(R.layout.activity_first_time2);
         username = findViewById(R.id.name);
         n1 = findViewById(R.id.number1);
         n2 = findViewById(R.id.number2);
@@ -42,7 +42,7 @@ public class FirstTime extends AppCompatActivity {
         } catch (Exception e){
             Toast.makeText(FirstTime.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        Intent change = new Intent(FirstTime.this, MainActivity.class);
+        Intent change = new Intent(FirstTime.this, EnterGesture.class);
         startActivity(change);
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ucmar17.a911_onthemove">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -10,6 +11,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"></uses-permission>
+
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
@@ -38,7 +41,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ucmar17.a911_onthemove.MainActivity" />
         </activity>
-        <activity android:name=".FirstTime"></activity>
+        <activity android:name=".FirstTime" />
+        <activity android:name=".EnterGesture"></activity>
+        <service android:name=".ActivityRecognizedService"/>
     </application>
 
 </manifest>
