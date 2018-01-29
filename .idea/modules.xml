@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/911_OnTheMove.iml" filepath="$PROJECT_DIR$/911_OnTheMove.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\app.iml" filepath="C:\Users\Ajithk14\AndroidStudioProjects\911_OnTheMove\app\app.iml" />
     </modules>
   </component>
 </project>
