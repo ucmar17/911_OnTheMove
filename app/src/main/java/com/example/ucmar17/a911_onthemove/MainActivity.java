@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private String person[];
     private LocationManager lmanager;
     private Location location;
-    String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/text", message = "I am in a crisis situation. My location is at: http://maps.google.com";
+    private String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/text", message = "I am in a crisis situation. My location is at: http://maps.google.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -350,7 +350,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         int county = 0;
         int countz = 0;
         int size = (one.size() > two.size()) ? two.size(): one.size();
-        int pass = (int)(0.6 * size);
+        int pass = (int)(0.9 * size);
         for(int x = 0; x < size; x++){
             if(one.get(x)[0] + 0.15 > two.get(x)[0] && one.get(x)[0] - 0.15 < two.get(x)[0]){
                 countx++;
@@ -370,6 +370,4 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             return true;
         else return false;
     }
-
-
 }
