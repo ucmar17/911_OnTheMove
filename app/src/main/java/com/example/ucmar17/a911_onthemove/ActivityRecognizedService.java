@@ -3,6 +3,10 @@ package com.example.ucmar17.a911_onthemove;
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
@@ -25,23 +29,56 @@ public class ActivityRecognizedService extends IntentService {
     public static final String BROADCAST_FILTER = "ActivityRecognizedService_broadcast_receiver_intent_filter";
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleIntent(Intent intent) {
         if (ActivityRecognitionResult.hasResult(intent))
         {
             ActivityRecognitionResult result = ActivityRecognitionResult.extractResult(intent);
-            handleDetectedActivity(result.getProbableActivities());
+            handleDetectedActivities(result.getProbableActivities());
         }
     }
-    private void handleDetectedActivity(List<DetectedActivity> probableActivities)
-    {
-        for (DetectedActivity activity: probableActivities)
-        {
-            //return activity.getType() == DetectedActivity.UNKNOWN;
-            String tempo = String.valueOf(activity.getType()==DetectedActivity.UNKNOWN);
-            Intent i = new Intent(BROADCAST_FILTER);
-            i.putExtra("connection_established", true);
-            i.putExtra("isEasy",tempo);
-            sendBroadcast(i);
+    private void handleDetectedActivities(List<DetectedActivity> probableActivities) {
+        for( DetectedActivity activity : probableActivities ) {
+            switch( activity.getType() ) {
+                case DetectedActivity.IN_VEHICLE: {
+                    Log.e( "ActivityRecogition", "In Vehicle: " + activity.getConfidence() );
+                    break;
+                }
+                case DetectedActivity.ON_BICYCLE: {
+                    Log.e( "ActivityRecogition", "On Bicycle: " + activity.getConfidence() );
+                    break;
+                }
+                case DetectedActivity.ON_FOOT: {
+                    Log.e( "ActivityRecogition", "On Foot: " + activity.getConfidence() );
+                    break;
+                }
+                case DetectedActivity.RUNNING: {
+                    Log.e( "ActivityRecogition", "Running: " + activity.getConfidence() );
+                    break;
+                }
+                case DetectedActivity.STILL: {
+                    Log.e( "ActivityRecogition", "Still: " + activity.getConfidence() );
+                    break;
+                }
+                case DetectedActivity.TILTING: {
+                    Log.e( "ActivityRecogition", "Tilting: " + activity.getConfidence() );
+                    break;
+                }
+                case DetectedActivity.WALKING: {
+                    Log.e( "ActivityRecogition", "Walking: " + activity.getConfidence() );
+                    if( activity.getConfidence() >= 75 ) {
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+                        builder.setContentText( "Are you walking?" );
+                        builder.setSmallIcon( R.mipmap.ic_launcher );
+                        builder.setContentTitle( getString( R.string.app_name ) );
+                        NotificationManagerCompat.from(this).notify(0, builder.build());
+                    }
+                    break;
+                }
+                case DetectedActivity.UNKNOWN: {
+                    Log.e( "ActivityRecogition", "Unknown: " + activity.getConfidence() );
+                    break;
+                }
+            }
         }
     }
 }

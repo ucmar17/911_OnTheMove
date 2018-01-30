@@ -26,6 +26,7 @@ import android.telephony.gsm.SmsManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.e("debug", "JAKE PAUL IS NUMBER ONE!!!!");
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sm.registerListener(sensorListener, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         acelVal = SensorManager.GRAVITY_EARTH;
@@ -198,8 +199,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             if (shake > 30)
             {
-                Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
-                toast.show();
+                //Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
+                //toast.show();
                 makeCallAndText();
             }
         }
@@ -217,8 +218,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             message = "I am in a crisis situation. My location is at: http://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();
         }
         SmsManager manager = SmsManager.getDefault();
-        manager.sendTextMessage(person[2], null, message, null, null);
-        manager.sendTextMessage(person[2], null, message, null, null);
+        if (!person[2].equals("")) {
+            manager.sendTextMessage(person[2], null, message, null, null);
+            manager.sendTextMessage(person[2], null, message, null, null);
+        }
+        if (!person[3].equals("")) {
+            manager.sendTextMessage(person[3], null, message, null, null);
+            manager.sendTextMessage(person[3], null, message, null, null);
+        }
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + person[1]));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -234,6 +241,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         boolean ranBefore = preferences.getBoolean("RanBefore", false);
         FirstTime first = new FirstTime();
+        String b4 = String.valueOf(ranBefore);
+        Log.d("Before?",b4);
         if (!ranBefore) {
             Log.d("debug1", "3");
             Intent change = new Intent(MainActivity.this, first.getClass());
@@ -278,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onStop() {
         super.onStop();
         smAccel.unregisterListener(this);
+
         Log.d("Debug", "Stop");
     }
 

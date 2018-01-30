@@ -6,53 +6,64 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
+
+
     <LinearLayout
+        android:id="@+id/roundLin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#00ddff"
+        android:background="@drawable/my_rounded_bg"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:background="#00ddff"
+            android:background="@drawable/my_rounded_bg"
             android:gravity="center"
             android:text="Welcome!"
-            android:textColor="#cc0000"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/name"
-            android:textSize="20dp"
-            android:hint="Enter name:"/>
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Enter name:"
+            android:textSize="20dp" />
+
+        <EditText
             android:id="@+id/number1"
-            android:textSize="20dp"
-            android:hint="Enter number to call:"/>
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Enter number to call:"
+            android:textSize="20dp" />
+
+        <EditText
             android:id="@+id/number2"
-            android:textSize="20dp"
-            android:hint="Enter number to text:"/>
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Enter number to text:"
+            android:textSize="20dp" />
+
+        <EditText
             android:id="@+id/number3"
-            android:textSize="20dp"
-            android:hint="Enter number to text:"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter number to text:"
+            android:textSize="20dp" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/my_rounded_bg"
+            android:backgroundTint="@color/colorPrimary"
             android:onClick="name"
-            android:text="Next..."/>
+            android:text="Next" />
     </LinearLayout>
 </LinearLayout>
