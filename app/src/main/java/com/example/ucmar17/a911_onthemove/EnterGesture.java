@@ -22,18 +22,21 @@ public class EnterGesture extends AppCompatActivity {
     {
         Button temp1 = findViewById(R.id.ITERATION1);
         Intent intent = new Intent(this, GestureScreen.class);
+        intent.putExtra("connectGoogle", "startIdentif");
         startActivity(intent);
     }
     public void enterGesture2(View v)
     {
         Button temp2 = findViewById(R.id.ITERATION2);
         Intent intent = new Intent(this, GestureScreen.class);
+        intent.putExtra("connectGoogle", "startIdentif");
         startActivity(intent);
     }
     public void enterGesture3(View v)
     {
         Button temp3 = findViewById(R.id.ITERATION3);
         Intent intent = new Intent(this, GestureScreen.class);
+        intent.putExtra("connectGoogle", "startIdentif");
         startActivity(intent);
 
     }
@@ -41,6 +44,7 @@ public class EnterGesture extends AppCompatActivity {
     {
         Button temp4 = findViewById(R.id.ITERATION4);
         Intent intent = new Intent(this, GestureScreen.class);
+        intent.putExtra("connectGoogle", "startIdentif");
         startActivity(intent);
 
     }
@@ -48,6 +52,7 @@ public class EnterGesture extends AppCompatActivity {
     {
         Button temp5 = findViewById(R.id.ITERATION5);
         Intent intent = new Intent(this, GestureScreen.class);
+        intent.putExtra("connectGoogle", "startIdentif");
         startActivity(intent);
 
     }

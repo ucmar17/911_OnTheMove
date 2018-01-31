@@ -40,26 +40,39 @@
 
         <TextView
             android:id="@+id/input_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="172dp"
+            android:layout_height="157dp"
+            android:layout_marginBottom="156dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="8dp"
             android:text="Home"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.363"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.221" />
 
         <Button
             android:id="@+id/record"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="116dp"
-            android:layout_marginTop="116dp"
+            android:layout_width="189dp"
+            android:layout_height="79dp"
+            android:layout_marginBottom="184dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:onClick="startRecord"
             android:text="Start Recording"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="?attr/colorAccent"
+            android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/result"
@@ -67,8 +80,23 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="19dp"
             android:layout_marginStart="16dp"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Listening..."
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:textSize="30sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.675"
             app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 

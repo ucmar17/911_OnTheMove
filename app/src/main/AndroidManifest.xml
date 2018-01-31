@@ -45,8 +45,8 @@
         <activity android:name=".EnterGesture" />
 
         <service android:name=".ActivityRecognizedService" />
-
-        <activity android:name=".GestureScreen"></activity>
+        <service android:name=".DetectedActivitiesIntentService"/>
+        <activity android:name=".GestureScreen"/>
     </application>
 
 </manifest>
