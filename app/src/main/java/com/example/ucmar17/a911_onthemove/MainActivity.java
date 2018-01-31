@@ -282,11 +282,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
         }
-     /*
-        if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
-            /*xText.setText("XA: " + event.values[0]);
-            yText.setText("YA: " + event.values[1]);
-            zText.setText("ZA: " + event.values[2]);
+             if(event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
+            //xText.setText("XA: " + event.values[0]);
+            //yText.setText("YA: " + event.values[1]);
+            //zText.setText("ZA: " + event.values[2]);
             float x = event.values[0];
             float y = event.values[1];
             float z = event.values[2];
@@ -300,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             {
                 //Toast toast = Toast.makeText(getApplicationContext(),"Do not shake",Toast.LENGTH_SHORT);
                 //toast.show();
-                //makeCallAndText();
+                makeCallAndText();
                 int papaya = 0;
             }
             if (System.currentTimeMillis() - currentTime > 3000) {
@@ -314,9 +313,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
         } else if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE_UNCALIBRATED){
-            /*xText.setText("XG: " + event.values[0]);
-            yText.setText("YG: " + event.values[1]);
-            zText.setText("ZG: " + event.values[2]);
+            //xText.setText("XG: " + event.values[0]);
+            //yText.setText("YG: " + event.values[1]);
+            //zText.setText("ZG: " + event.values[2]);
             if (System.currentTimeMillis() - currentTime > 3000) {
                 changeButton();
             } else if (record.getText().equals("Recording...")) {
@@ -327,7 +326,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 currentGyroVals.add(temp);
             }
         }
-        */
+
 
     }
     public void makeCallAndText() throws NullPointerException{
@@ -340,11 +339,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         Log.d("arr: ", Arrays.toString(person));
         SmsManager manager = SmsManager.getDefault();
-        if (!person[2].equals("")) {
+        if (person.length > 2 && !person[2].equals("")) {
             manager.sendTextMessage(person[2], null, message, null, null);
             manager.sendTextMessage(person[2], null, message, null, null);
         }
-        if (!person[3].equals("")) {
+        if (person.length > 3 && !person[3].equals("")) {
             manager.sendTextMessage(person[3], null, message, null, null);
             manager.sendTextMessage(person[3], null, message, null, null);
         }

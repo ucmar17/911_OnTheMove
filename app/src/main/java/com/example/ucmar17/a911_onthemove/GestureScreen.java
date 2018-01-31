@@ -58,6 +58,7 @@ public class GestureScreen extends AppCompatActivity implements SensorEventListe
     //gyroscope stuff:
     private int CAP = 200;
     private int RUN;
+    private int RUN2;
     private boolean isCollecting;
     private TextView t4;
     private Sensor accel, gyro;
@@ -85,8 +86,9 @@ public class GestureScreen extends AppCompatActivity implements SensorEventListe
             run5.add(new ArrayList<Double>());
         }
 
-        isCollecting = false;
-        RUN=0;
+        isCollecting = true;
+        RUN=1;
+        RUN2 = 1;
         t4 = findViewById(R.id.editText);
         smAccel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         smGyro = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -133,12 +135,33 @@ public class GestureScreen extends AppCompatActivity implements SensorEventListe
     public void onBackPressed() {
 
     }
+    public void prompt()
+    {
+        v3.setText("STOP");
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        v3.setText("Perform motion again");
+
+    }
+    public void changeActivities()
+    {
+        if (RUN==6 && RUN2 == 6)
+        {
+            Log.d("t","WE MADE IT");
+            Log.d("PAY ATTENTION", ""+run2.get(0).size());
+        }
+
+    }
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (isCollecting)
         {
             if (sensorEvent.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION)
             {
+                Log.d("WHAWHH",""+RUN);
                 double xtemp = Double.parseDouble(""+sensorEvent.values[0]);
                 double ytemp = Double.parseDouble(""+sensorEvent.values[1]);
                 double ztemp = Double.parseDouble(""+sensorEvent.values[2]);
@@ -148,53 +171,67 @@ public class GestureScreen extends AppCompatActivity implements SensorEventListe
                         run1.get(0).add(xtemp);
                         run1.get(1).add(ytemp);
                         run1.get(2).add(ztemp);
+                        if (run1.get(0).size()>=CAP){RUN++;Log.d("WGWF",""+RUN);prompt();}
                     case 2:
                         run2.get(0).add(xtemp);
                         run2.get(1).add(ytemp);
                         run2.get(2).add(ztemp);
+                        if (run2.get(0).size()>=CAP){RUN++;prompt();}
                     case 3:
                         run3.get(0).add(xtemp);
                         run3.get(1).add(ytemp);
                         run3.get(2).add(ztemp);
+                        if (run3.get(0).size()>=CAP){RUN++;prompt();}
                     case 4:
                         run4.get(0).add(xtemp);
                         run4.get(1).add(ytemp);
                         run4.get(2).add(ztemp);
+                        if (run4.get(0).size()>=CAP){RUN++;prompt();}
                     case 5:
                         run5.get(0).add(xtemp);
                         run5.get(1).add(ytemp);
                         run5.get(2).add(ztemp);
+                        if (run5.get(0).size()>=CAP){RUN++;prompt();}
+                    case 6:
+                        changeActivities();
                 }
 
 
             }
-            else
+            else if (RUN == 6)
             {
                 double xtemp = Double.parseDouble(""+sensorEvent.values[0]);
                 double ytemp = Double.parseDouble(""+sensorEvent.values[1]);
                 double ztemp = Double.parseDouble(""+sensorEvent.values[2]);
-                switch (RUN)
+                switch (RUN2)
                 {
                     case 1:
                         run1.get(3).add(xtemp);
                         run1.get(4).add(ytemp);
                         run1.get(5).add(ztemp);
+                        if (run1.get(3).size()>=CAP){RUN2++;prompt();}
                     case 2:
                         run2.get(3).add(xtemp);
                         run2.get(4).add(ytemp);
                         run2.get(5).add(ztemp);
+                        if (run2.get(3).size()>=CAP){RUN2++;prompt();}
                     case 3:
                         run3.get(3).add(xtemp);
                         run3.get(4).add(ytemp);
                         run3.get(5).add(ztemp);
+                        if (run3.get(3).size()>=CAP){RUN2++;prompt();}
                     case 4:
                         run4.get(3).add(xtemp);
                         run4.get(4).add(ytemp);
                         run4.get(5).add(ztemp);
+                        if (run4.get(3).size()>=CAP){RUN2++;prompt();}
                     case 5:
                         run5.get(3).add(xtemp);
                         run5.get(4).add(ytemp);
                         run5.get(5).add(ztemp);
+                        if (run5.get(3).size()>=CAP){RUN2++;changeActivities();}
+                    case 6:
+                        changeActivities();
                 }
             }
         }

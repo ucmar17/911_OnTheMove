@@ -56,24 +56,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.221" />
 
-        <Button
-            android:id="@+id/record"
-            android:layout_width="189dp"
-            android:layout_height="79dp"
-            android:layout_marginBottom="184dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:onClick="startRecord"
-            android:text="Start Recording"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="?attr/colorAccent"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TextView
             android:id="@+id/result"
             android:layout_width="wrap_content"
@@ -98,6 +80,41 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.675"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="320dp"
+            android:layout_height="105dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="While it may not look like it, your movement is being tracked and will be interpreted to make sure that you are safe"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.925" />
+
+        <Button
+            android:id="@+id/record"
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/cast_expanded_controller_text_color"
+            android:backgroundTint="@color/cast_expanded_controller_text_color"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.983" />
     </android.support.constraint.ConstraintLayout>
 
 

@@ -87,7 +87,7 @@ public class FirstTime extends AppCompatActivity {
             outfile.flush();
             outfile.close();
             Toast.makeText(FirstTime.this, "Sucessfully Saved!", Toast.LENGTH_SHORT).show();
-            Intent change = new Intent(FirstTime.this, EnterGesture.class);
+            Intent change = new Intent(FirstTime.this, MainActivity.class);
             startActivity(change);}
         } catch (Exception e){
             Toast.makeText(FirstTime.this, e.getMessage(), Toast.LENGTH_SHORT).show();
